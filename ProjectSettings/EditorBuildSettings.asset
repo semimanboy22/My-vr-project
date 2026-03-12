@@ -5,14 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Samples/XR Interaction Toolkit/3.3.1/Starter Assets/DemoScene.unity
-    guid: 319dafa5c80f29f428dc1e0d03f04177
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6d5ad965f7bd36144918e7d94bddf757, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 86132b6bd08c4ef47b83fbab2d68b2ae, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e3a806452c7bdf747ae94edf1ee5b174, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: baed67276ed125a4695671f608c0082a, type: 2}
   m_UseUCBPForAssetBundles: 0
