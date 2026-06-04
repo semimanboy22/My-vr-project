@@ -6,15 +6,32 @@ public class humankillingcar : MonoBehaviour
     [Header("Movement")]
     public float speed = 10f;
     public Vector3 moveDirection = Vector3.forward;
+    public float maxDistance = 50f;
 
     [Header("Kill Barrier")]
     public float killDistance = 2f;
     public Vector3 barrierSize = new Vector3(3f, 3f, 1f);
 
+    private Vector3 startPosition;
+    private float distanceTraveled = 0f;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
     void Update()
     {
         // Move the car in a straight line
         transform.Translate(moveDirection.normalized * speed * Time.deltaTime, Space.World);
+        distanceTraveled += speed * Time.deltaTime;
+
+        // Reset position if max distance reached
+        if (distanceTraveled >= maxDistance)
+        {
+            transform.position = startPosition;
+            distanceTraveled = 0f;
+        }
 
         // Position of invisible barrier in front of the car
         Vector3 barrierPosition = transform.position + moveDirection.normalized * killDistance;
