@@ -1,5 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class RespawnObject
+{
+    public Transform obj;
+    public Vector3 respawnPosition;
+}
 
 public class humankillingcar : MonoBehaviour
 {
@@ -11,6 +19,9 @@ public class humankillingcar : MonoBehaviour
     [Header("Kill Barrier")]
     public float killDistance = 2f;
     public Vector3 barrierSize = new Vector3(3f, 3f, 1f);
+
+    [Header("Respawn Settings")]
+    public List<RespawnObject> objectsToRespawn = new List<RespawnObject>();
 
     private Vector3 startPosition;
     private float distanceTraveled = 0f;
@@ -47,25 +58,50 @@ public class humankillingcar : MonoBehaviour
         {
             if (hit.CompareTag("Player"))
             {
-                SendPlayerToSpawn(hit.transform);
+                RespawnObject(hit.transform);
+            }
+            else
+            {
+                // Check if hit object is in the respawn list
+                for (int i = 0; i < objectsToRespawn.Count; i++)
+                {
+                    if (hit.transform == objectsToRespawn[i].obj)
+                    {
+                        RespawnObjectAtPosition(hit.transform, objectsToRespawn[i].respawnPosition);
+                        break;
+                    }
+                }
             }
         }
     }
 
-    void SendPlayerToSpawn(Transform player)
+    void RespawnObjectAtPosition(Transform obj, Vector3 respawnPosition)
+    {
+        CharacterController cc = obj.GetComponent<CharacterController>();
+
+        if (cc != null)
+            cc.enabled = false;
+
+        obj.position = respawnPosition;
+
+        if (cc != null)
+            cc.enabled = true;
+    }
+
+    void RespawnObject(Transform obj)
     {
         // Find spawn point object in scene
         GameObject spawn = GameObject.FindWithTag("SpawnPoint");
 
         if (spawn != null)
         {
-            CharacterController cc = player.GetComponent<CharacterController>();
+            CharacterController cc = obj.GetComponent<CharacterController>();
 
             // Disable CharacterController temporarily if needed
             if (cc != null)
                 cc.enabled = false;
 
-            player.position = spawn.transform.position;
+            obj.position = spawn.transform.position;
 
             if (cc != null)
                 cc.enabled = true;
@@ -86,5 +122,18 @@ public class humankillingcar : MonoBehaviour
         );
 
         Gizmos.DrawWireCube(Vector3.zero, barrierSize);
+
+        // Reset matrix before drawing respawn spheres
+        Gizmos.matrix = Matrix4x4.identity;
+
+        // Draw respawn positions as blue spheres
+        Gizmos.color = Color.blue;
+        foreach (RespawnObject respawnObj in objectsToRespawn)
+        {
+            if (respawnObj.obj != null)
+            {
+                Gizmos.DrawSphere(respawnObj.respawnPosition, 0.5f);
+            }
+        }
     }
 }
