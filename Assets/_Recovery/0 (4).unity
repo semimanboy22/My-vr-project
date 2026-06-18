@@ -32029,7 +32029,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &211234551
@@ -67855,16 +67854,8 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: -14, y: 2, z: 7.5}
-  respawnableObjects:
-  - obj: {fileID: 1651246743}
-    defaultRespawnPoint: {x: 4, y: 2, z: 7.5}
-    checkpointRespawnSettings: []
-  checkpointSettings:
-  - checkpointOrder: 0
-    checkpointObject: {fileID: 854935399}
-    spawnOffset: {x: 2, y: 0, z: 0}
-    triggerBoxSize: {x: 5, y: 5, z: 5}
+  respawnableObjects: []
+  checkpointSettings: []
 --- !u!1 &451720322
 GameObject:
   m_ObjectHideFlags: 0
@@ -77062,7 +77053,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &511204028
@@ -93588,7 +93578,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &606921310
@@ -113257,7 +113246,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &735086059
@@ -132724,7 +132712,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &853713700
@@ -198221,7 +198208,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1265149324
@@ -200546,7 +200532,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1279334067
@@ -230241,7 +230226,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1476327307
@@ -232344,7 +232328,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1492813008
@@ -269453,7 +269436,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1713680573
@@ -278676,7 +278658,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1764713892
@@ -285544,7 +285525,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 2
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1817326711
@@ -294959,7 +294939,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1874847939
@@ -300370,7 +300349,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1909738132
@@ -308481,7 +308459,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1961936920
@@ -311129,7 +311106,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1977823840
@@ -313137,7 +313113,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &1993001819
@@ -315293,7 +315268,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2006014380
@@ -318210,7 +318184,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2022917773
@@ -319019,7 +318992,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 5, y: 5, z: 13}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2026395648
@@ -326343,7 +326315,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2066788492
@@ -326963,7 +326934,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2070718227
@@ -334342,7 +334312,6 @@ MonoBehaviour:
   maxDistance: 90
   killDistance: 0
   barrierSize: {x: 10, y: 4, z: 6}
-  playerOriginalSpawnPoint: {x: 0, y: 0, z: 0}
   respawnableObjects: []
   checkpointSettings: []
 --- !u!1 &2122061733
