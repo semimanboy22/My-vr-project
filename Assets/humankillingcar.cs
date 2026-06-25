@@ -29,8 +29,10 @@ public class CheckpointRespawnSettings
 {
     public int checkpointOrder = 0;
     public Transform checkpointObject;
-    public Vector3 spawnOffset = new Vector3(1f, 0f, 0f);
+    public Vector3 playerSpawnOffset = new Vector3(1f, 0f, 0f);
     public Vector3 triggerBoxSize = new Vector3(5f, 5f, 5f);
+    [Tooltip("Which objects this checkpoint can respawn when hit by the car")]
+    public List<RespawnableObject> respawnableObjectsOnCheckpoint = new List<RespawnableObject>();
 }
 
 public class humankillingcar : MonoBehaviour
@@ -58,6 +60,7 @@ public class humankillingcar : MonoBehaviour
     
     // Checkpoint system
     private int lastCheckpointOrderReached = -1;
+    private Vector3 lastCheckpointPlayerSpawnPos;
 
     public void SetPlayerSpawnPoint(Vector3 newSpawnPoint)
     {
@@ -95,6 +98,7 @@ public class humankillingcar : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        lastCheckpointPlayerSpawnPos = playerOriginalSpawnPoint;
     }
 
     public void RegisterCheckpoint(int checkpointOrder, Vector3 checkpointPosition)
@@ -114,18 +118,8 @@ public class humankillingcar : MonoBehaviour
             return playerOriginalSpawnPoint;
         }
 
-        // Find the checkpoint with the highest order reached
-        for (int i = 0; i < checkpointSettings.Count; i++)
-        {
-            if (checkpointSettings[i].checkpointOrder == lastCheckpointOrderReached && checkpointSettings[i].checkpointObject != null)
-            {
-                // Return the spawn offset position directly
-                return checkpointSettings[i].checkpointObject.position + checkpointSettings[i].spawnOffset;
-            }
-        }
-
-        // Fallback to start position if checkpoint not found
-        return startPosition;
+        // Return the last checkpoint's player spawn position
+        return lastCheckpointPlayerSpawnPos;
     }
 
     private Vector3 GetRespawnPositionForRespawnableObject(RespawnableObject respawnableObj)
@@ -152,6 +146,34 @@ public class humankillingcar : MonoBehaviour
 
     void Update()
     {
+        // Check checkpoints for player entry
+        for (int i = 0; i < checkpointSettings.Count; i++)
+        {
+            var setting = checkpointSettings[i];
+            if (setting.checkpointObject == null)
+                continue;
+
+            Vector3 checkpointPos = setting.checkpointObject.position;
+            Quaternion checkpointRot = setting.checkpointObject.rotation;
+            Vector3 half = setting.triggerBoxSize * 0.5f;
+
+            Collider[] cols = Physics.OverlapBox(checkpointPos, half, checkpointRot);
+            foreach (var col in cols)
+            {
+                if (col.CompareTag("Player"))
+                {
+                    // Only register if this is a higher order checkpoint
+                    if (setting.checkpointOrder > lastCheckpointOrderReached)
+                    {
+                        RegisterCheckpoint(setting.checkpointOrder, checkpointPos);
+                        // Store the player spawn position for this checkpoint
+                        lastCheckpointPlayerSpawnPos = checkpointPos + setting.playerSpawnOffset;
+                    }
+                    break;
+                }
+            }
+        }
+
         // Move the car in a straight line
         transform.Translate(moveDirection.normalized * speed * Time.deltaTime, Space.World);
         distanceTraveled += speed * Time.deltaTime;
@@ -248,14 +270,14 @@ public class humankillingcar : MonoBehaviour
                 Gizmos.color = Color.white;
                 Gizmos.DrawSphere(checkpointPos, 0.5f);
                 
-                // Draw spawn offset position as green sphere (where player will respawn)
-                Vector3 spawnPos = checkpointPos + setting.spawnOffset;
+                // Draw player spawn offset position as green sphere (where player will respawn)
+                Vector3 playerSpawnPos = checkpointPos + setting.playerSpawnOffset;
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(spawnPos, 0.3f);
+                Gizmos.DrawSphere(playerSpawnPos, 0.3f);
                 
-                // Draw line from checkpoint to spawn position
+                // Draw line from checkpoint to player spawn position
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawLine(checkpointPos, spawnPos);
+                Gizmos.DrawLine(checkpointPos, playerSpawnPos);
             }
         }
 

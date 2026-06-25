@@ -161,7 +161,7 @@ public class HumanKillingCarEditor : Editor
             checkpointSettingsProp.arraySize++;
             var newElement = checkpointSettingsProp.GetArrayElementAtIndex(checkpointSettingsProp.arraySize - 1);
             newElement.FindPropertyRelative("checkpointOrder").intValue = listSize;
-            newElement.FindPropertyRelative("spawnOffset").vector3Value = new Vector3(1f, 0f, 0f);
+            newElement.FindPropertyRelative("playerSpawnOffset").vector3Value = new Vector3(1f, 0f, 0f);
             newElement.FindPropertyRelative("triggerBoxSize").vector3Value = new Vector3(5f, 5f, 5f);
         }
 
@@ -175,7 +175,7 @@ public class HumanKillingCarEditor : Editor
             var element = checkpointSettingsProp.GetArrayElementAtIndex(i);
             var orderProp = element.FindPropertyRelative("checkpointOrder");
             var checkpointObjProp = element.FindPropertyRelative("checkpointObject");
-            var offsetProp = element.FindPropertyRelative("spawnOffset");
+            var offsetProp = element.FindPropertyRelative("playerSpawnOffset");
             var boxSizeProp = element.FindPropertyRelative("triggerBoxSize");
 
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -243,23 +243,23 @@ public class HumanKillingCarEditor : Editor
         // Store values
         int order1 = element1.FindPropertyRelative("checkpointOrder").intValue;
         Transform checkpoint1 = element1.FindPropertyRelative("checkpointObject").objectReferenceValue as Transform;
-        Vector3 offset1 = element1.FindPropertyRelative("spawnOffset").vector3Value;
+        Vector3 offset1 = element1.FindPropertyRelative("playerSpawnOffset").vector3Value;
         Vector3 boxSize1 = element1.FindPropertyRelative("triggerBoxSize").vector3Value;
 
         int order2 = element2.FindPropertyRelative("checkpointOrder").intValue;
         Transform checkpoint2 = element2.FindPropertyRelative("checkpointObject").objectReferenceValue as Transform;
-        Vector3 offset2 = element2.FindPropertyRelative("spawnOffset").vector3Value;
+        Vector3 offset2 = element2.FindPropertyRelative("playerSpawnOffset").vector3Value;
         Vector3 boxSize2 = element2.FindPropertyRelative("triggerBoxSize").vector3Value;
 
         // Swap
         element1.FindPropertyRelative("checkpointOrder").intValue = order2;
         element1.FindPropertyRelative("checkpointObject").objectReferenceValue = checkpoint2;
-        element1.FindPropertyRelative("spawnOffset").vector3Value = offset2;
+        element1.FindPropertyRelative("playerSpawnOffset").vector3Value = offset2;
         element1.FindPropertyRelative("triggerBoxSize").vector3Value = boxSize2;
 
         element2.FindPropertyRelative("checkpointOrder").intValue = order1;
         element2.FindPropertyRelative("checkpointObject").objectReferenceValue = checkpoint1;
-        element2.FindPropertyRelative("spawnOffset").vector3Value = offset1;
+        element2.FindPropertyRelative("playerSpawnOffset").vector3Value = offset1;
         element2.FindPropertyRelative("triggerBoxSize").vector3Value = boxSize1;
     }
 }
