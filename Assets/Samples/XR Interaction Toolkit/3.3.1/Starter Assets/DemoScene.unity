@@ -67847,9 +67847,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 235392827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31ce3768ee66b541996824ffd054950, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::carscript2
+  m_EditorClassIdentifier: '::'
+  speed: 10
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  killDistance: 0
+  barrierSize: {x: 10, y: 4, z: 6}
+  playerOriginalSpawnPoint: {x: -14, y: 2, z: 7.5}
+  respawnableObjects:
+  - obj: {fileID: 1651246743}
+    defaultRespawnPoint: {x: 4, y: 2, z: 7.5}
+    checkpointRespawnSettings: []
+  checkpointSettings:
+  - checkpointOrder: 0
+    checkpointObject: {fileID: 854935399}
+    spawnOffset: {x: 2, y: 0, z: 0}
+    triggerBoxSize: {x: 5, y: 5, z: 5}
 --- !u!1 &451720322
 GameObject:
   m_ObjectHideFlags: 0

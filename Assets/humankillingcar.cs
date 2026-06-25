@@ -2,49 +2,66 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-public class HumanKillingCar : MonoBehaviour
+[System.Serializable]
+public class RespawnableObjectCheckpointSettings
+{
+    public int checkpointOrder = 0;
+    public Vector3 respawnPoint = Vector3.zero;
+}
+
+[System.Serializable]
+public class RespawnableObject
+{
+    public Transform obj;
+    [SerializeField]
+    private Vector3 defaultRespawnPoint = Vector3.zero;
+    [SerializeField]
+    private List<RespawnableObjectCheckpointSettings> checkpointRespawnSettings = new List<RespawnableObjectCheckpointSettings>();
+
+    public Vector3 GetDefaultRespawnPoint() => defaultRespawnPoint;
+    public void SetDefaultRespawnPoint(Vector3 point) => defaultRespawnPoint = point;
+    
+    public List<RespawnableObjectCheckpointSettings> GetCheckpointRespawnSettings() => checkpointRespawnSettings;
+}
+
+[System.Serializable]
+public class CheckpointRespawnSettings
+{
+    public int checkpointOrder = 0;
+    public Transform checkpointObject;
+    public Vector3 spawnOffset = new Vector3(1f, 0f, 0f);
+    public Vector3 triggerBoxSize = new Vector3(5f, 5f, 5f);
+}
+
+public class humankillingcar : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 10f;
     public Vector3 moveDirection = Vector3.forward;
     public float maxDistance = 50f;
 
-    [Header("Kill Barrier (what it can kill and size)")]
-    [Tooltip("Layer mask for objects that can be killed by the barrier (use the layer dropdown)")]
-    public LayerMask killLayerMask = ~0; // default: everything
+    [Header("Kill Barrier")]
     public float killDistance = 2f;
     public Vector3 barrierSize = new Vector3(3f, 3f, 1f);
 
-    [Header("Player Respawn (default)")]
-    [Tooltip("Optional: set a Transform in the scene to use as the default spawn point. If empty, use the vector below.")]
-    public Transform defaultPlayerSpawnTransform;
-    public Vector3 defaultPlayerSpawnPoint = Vector3.zero;
+    [Header("Player Respawn")]
+    public Vector3 playerOriginalSpawnPoint = Vector3.zero;
 
     [Header("Respawnable Objects")]
     public List<RespawnableObject> respawnableObjects = new List<RespawnableObject>();
 
     [Header("Checkpoint Respawn Settings")]
-    [Tooltip("Configure checkpoints: assign the object, trigger box size, spawn offset and order (priority). Higher order values take precedence and are never overridden by lower orders once reached.")]
     public List<CheckpointRespawnSettings> checkpointSettings = new List<CheckpointRespawnSettings>();
 
     private Vector3 startPosition;
     private float distanceTraveled = 0f;
-
-    // Checkpoint system: starts at -1 meaning none reached
+    
+    // Checkpoint system
     private int lastCheckpointOrderReached = -1;
-
-    void Start()
-    {
-        startPosition = transform.position;
-
-        // If a spawn transform was assigned in inspector, use its position as default
-        if (defaultPlayerSpawnTransform != null)
-            defaultPlayerSpawnPoint = defaultPlayerSpawnTransform.position;
-    }
 
     public void SetPlayerSpawnPoint(Vector3 newSpawnPoint)
     {
-        defaultPlayerSpawnPoint = newSpawnPoint;
+        playerOriginalSpawnPoint = newSpawnPoint;
     }
 
     public void SetRespawnableObjectDefaultSpawn(RespawnableObject respawnObj, Vector3 spawnPoint)
@@ -55,7 +72,8 @@ public class HumanKillingCar : MonoBehaviour
     public void SetRespawnableObjectCheckpointSpawn(RespawnableObject respawnObj, int checkpointOrder, Vector3 spawnPoint)
     {
         var checkpointSettings = respawnObj.GetCheckpointRespawnSettings();
-
+        
+        // Find if checkpoint setting already exists
         for (int i = 0; i < checkpointSettings.Count; i++)
         {
             if (checkpointSettings[i].checkpointOrder == checkpointOrder)
@@ -64,7 +82,8 @@ public class HumanKillingCar : MonoBehaviour
                 return;
             }
         }
-
+        
+        // Create new checkpoint setting if it doesn't exist
         RespawnableObjectCheckpointSettings newSetting = new RespawnableObjectCheckpointSettings
         {
             checkpointOrder = checkpointOrder,
@@ -73,9 +92,14 @@ public class HumanKillingCar : MonoBehaviour
         checkpointSettings.Add(newSetting);
     }
 
-    public void RegisterCheckpoint(int checkpointOrder)
+    void Start()
     {
-        // Only increase checkpoint order; never decrease. This enforces priority permanence.
+        startPosition = transform.position;
+    }
+
+    public void RegisterCheckpoint(int checkpointOrder, Vector3 checkpointPosition)
+    {
+        // Update last checkpoint order if this is newer
         if (checkpointOrder > lastCheckpointOrderReached)
         {
             lastCheckpointOrderReached = checkpointOrder;
@@ -84,9 +108,10 @@ public class HumanKillingCar : MonoBehaviour
 
     private Vector3 GetRespawnPositionForCheckpoint()
     {
+        // If no checkpoint reached, respawn at player's original spawn point
         if (lastCheckpointOrderReached == -1)
         {
-            return defaultPlayerSpawnPoint;
+            return playerOriginalSpawnPoint;
         }
 
         // Find the checkpoint with the highest order reached
@@ -127,63 +152,43 @@ public class HumanKillingCar : MonoBehaviour
 
     void Update()
     {
-        // First: check checkpoints to see if the player entered any trigger boxes
-        for (int i = 0; i < checkpointSettings.Count; i++)
-        {
-            var setting = checkpointSettings[i];
-            if (setting.checkpointObject == null)
-                continue;
-
-            Vector3 center = setting.checkpointObject.position;
-            Quaternion rot = setting.checkpointObject.rotation;
-            Vector3 half = setting.triggerBoxSize * 0.5f;
-
-            Collider[] cols = Physics.OverlapBox(center, half, rot);
-            foreach (var col in cols)
-            {
-                if (!IsInLayerMask(col.gameObject, killLayerMask) && col.CompareTag("Player"))
-                {
-                    // Register by explicit configured checkpointOrder (priority)
-                    RegisterCheckpoint(setting.checkpointOrder);
-                    // Do not lower order if a lower-order checkpoint is hit later
-                    break;
-                }
-            }
-        }
-
-        // Move the object
+        // Move the car in a straight line
         transform.Translate(moveDirection.normalized * speed * Time.deltaTime, Space.World);
         distanceTraveled += speed * Time.deltaTime;
 
+        // Reset position if max distance reached
         if (distanceTraveled >= maxDistance)
         {
             transform.position = startPosition;
             distanceTraveled = 0f;
         }
 
-        // Killing barrier check
+        // Position of invisible barrier in front of the car
         Vector3 barrierPosition = transform.position + moveDirection.normalized * killDistance;
-        Collider[] hits = Physics.OverlapBox(barrierPosition, barrierSize * 0.5f, transform.rotation);
 
-        foreach (var hit in hits)
+        // Check if player touches the invisible barrier
+        Collider[] hits = Physics.OverlapBox(
+            barrierPosition,
+            barrierSize / 2,
+            transform.rotation
+        );
+
+        foreach (Collider hit in hits)
         {
-            // Filter by layer mask
-            if (!IsInLayerMask(hit.gameObject, killLayerMask))
-                continue;
-
             if (hit.CompareTag("Player"))
             {
                 RespawnObject(hit.transform);
             }
             else
             {
-                // Check if it's a registered respawnable object
+                // Check if hit object is in the respawnable list
                 for (int i = 0; i < respawnableObjects.Count; i++)
                 {
-                    if (respawnableObjects[i].obj == hit.transform)
+                    if (hit.transform == respawnableObjects[i].obj)
                     {
-                        Vector3 resp = GetRespawnPositionForRespawnableObject(respawnableObjects[i]);
-                        RespawnObjectAtPosition(hit.transform, resp);
+                        // Respawn object at its configured respawn point based on checkpoint
+                        Vector3 respawnPos = GetRespawnPositionForRespawnableObject(respawnableObjects[i]);
+                        RespawnObjectAtPosition(hit.transform, respawnPos);
                         break;
                     }
                 }
@@ -194,66 +199,101 @@ public class HumanKillingCar : MonoBehaviour
     void RespawnObjectAtPosition(Transform obj, Vector3 respawnPosition)
     {
         CharacterController cc = obj.GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = false;
+
+        if (cc != null)
+            cc.enabled = false;
+
         obj.position = respawnPosition;
-        if (cc != null) cc.enabled = true;
+
+        if (cc != null)
+            cc.enabled = true;
     }
 
     void RespawnObject(Transform obj)
     {
+        // Respawn player at the last checkpoint reached, or start position if none reached
         Vector3 respawnPos = GetRespawnPositionForCheckpoint();
+        
         CharacterController cc = obj.GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = false;
+
+        if (cc != null)
+            cc.enabled = false;
+
         obj.position = respawnPos;
-        if (cc != null) cc.enabled = true;
+
+        if (cc != null)
+            cc.enabled = true;
     }
 
-    bool IsInLayerMask(GameObject go, LayerMask mask)
-    {
-        return (mask.value & (1 << go.layer)) != 0;
-    }
-
+    // Draw invisible barrier in editor
     void OnDrawGizmos()
     {
-        // draw kill barrier
-        Gizmos.color = Color.red;
-        Vector3 barrierPos = transform.position + (Application.isPlaying ? moveDirection.normalized * killDistance : moveDirection.normalized * killDistance);
-        Gizmos.matrix = Matrix4x4.TRS(barrierPos, transform.rotation, Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, barrierSize);
+        // Reset matrix
         Gizmos.matrix = Matrix4x4.identity;
 
-        // draw checkpoints trigger boxes
-        Gizmos.color = Color.blue;
-        foreach (var setting in checkpointSettings)
+        // Draw all checkpoint trigger boxes and spawn offsets
+        foreach (CheckpointRespawnSettings setting in checkpointSettings)
         {
-            if (setting.checkpointObject == null) continue;
-            Vector3 cp = setting.checkpointObject.position;
-            Gizmos.matrix = Matrix4x4.TRS(cp, setting.checkpointObject.rotation, Vector3.one);
-            Gizmos.DrawWireCube(Vector3.zero, setting.triggerBoxSize);
-            Gizmos.matrix = Matrix4x4.identity;
-
-            // draw small white sphere for checkpoint object
-            Gizmos.color = Color.white;
-            Gizmos.DrawSphere(cp, 0.25f);
-            Gizmos.color = Color.blue;
-
-            // draw spawn offset position as green small sphere
-            Vector3 spawnPos = cp + setting.spawnOffset;
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(spawnPos, 0.15f);
-            Gizmos.color = Color.blue;
+            if (setting.checkpointObject != null)
+            {
+                Vector3 checkpointPos = setting.checkpointObject.position;
+                
+                // Draw trigger box as blue outline
+                Gizmos.color = Color.blue;
+                Gizmos.matrix = Matrix4x4.TRS(checkpointPos, Quaternion.identity, Vector3.one);
+                Gizmos.DrawWireCube(Vector3.zero, setting.triggerBoxSize);
+                Gizmos.matrix = Matrix4x4.identity;
+                
+                // Draw checkpoint position as white sphere
+                Gizmos.color = Color.white;
+                Gizmos.DrawSphere(checkpointPos, 0.5f);
+                
+                // Draw spawn offset position as green sphere (where player will respawn)
+                Vector3 spawnPos = checkpointPos + setting.spawnOffset;
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(spawnPos, 0.3f);
+                
+                // Draw line from checkpoint to spawn position
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(checkpointPos, spawnPos);
+            }
         }
 
-        // draw default player spawn
-        if (defaultPlayerSpawnTransform != null)
+        // Draw respawnable objects' positions and respawn points
+        Gizmos.color = Color.cyan;
+        foreach (RespawnableObject respObj in respawnableObjects)
         {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(defaultPlayerSpawnTransform.position, 0.3f);
+            if (respObj.obj != null)
+            {
+                // Draw current object position
+                Gizmos.DrawSphere(respObj.obj.position, 0.3f);
+                
+                // Draw default respawn point
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawSphere(respObj.GetDefaultRespawnPoint(), 0.25f);
+                
+                // Draw line from object to default respawn point
+                Gizmos.color = new Color(1, 0, 1, 0.5f);
+                Gizmos.DrawLine(respObj.obj.position, respObj.GetDefaultRespawnPoint());
+                
+                // Draw checkpoint-specific respawn points
+                foreach (RespawnableObjectCheckpointSettings checkpointSetting in respObj.GetCheckpointRespawnSettings())
+                {
+                    Gizmos.color = new Color(0, 1, 1, 0.7f);
+                    Gizmos.DrawSphere(checkpointSetting.respawnPoint, 0.2f);
+                }
+            }
         }
-        else if (defaultPlayerSpawnPoint != Vector3.zero)
+
+        // Draw current player respawn position as large blue sphere preview
+        if (playerOriginalSpawnPoint != Vector3.zero)
         {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(defaultPlayerSpawnPoint, 0.3f);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(playerOriginalSpawnPoint, 0.5f);
+            
+            // Draw a semi-transparent outer sphere for better visibility
+            Gizmos.color = new Color(0, 0, 1, 0.3f);
+            Gizmos.DrawWireSphere(playerOriginalSpawnPoint, 0.7f);
         }
     }
 }
