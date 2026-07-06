@@ -1,0 +1,54 @@
+CHECKPOINT VISUALIZATION AND RESPAWN SYSTEM - UPDATED
+=====================================================
+
+FIXES IMPLEMENTED:
+
+1. CHECKPOINT BOX VISIBILITY IN-GAME (DARK BLUE, SEE-THROUGH)
+   ? Checkpoints now display as dark blue, semi-transparent boxes during gameplay
+   ? When player enters checkpoint, the box becomes lighter blue and more visible
+   ? Works correctly with parent transforms (checkpoints set as children)
+   ? Displays exactly the same size as shown in the editor
+
+2. CAR KILLS PLAYER EVEN WITHOUT CHECKPOINT
+   ? Player now respawns at START POSITION if killed before hitting any checkpoint
+   ? Car will kill the player regardless of checkpoint status
+   ? No more error messages when player gets hit at the start
+
+3. IMPROVED CHECKPOINT DETECTION
+   ? Detection works with parent-child relationships
+   ? Properly respects rotation and position of parent transforms
+   ? Physics.OverlapBox correctly accounts for parent transforms
+
+HOW IT WORKS NOW:
+
+WHEN YOU ENTER A CHECKPOINT:
+1. The checkpoint box will light up - becoming lighter blue and more visible
+2. "Checkpoint X" notification appears on screen
+3. This checkpoint is now your respawn point
+
+WHEN YOU GET HIT BY THE CAR:
+- If you've hit a checkpoint: You respawn at that checkpoint
+- If you haven't hit any checkpoint: You respawn at the game start position
+- The car will kill you in BOTH cases
+
+VISUAL FEEDBACK:
+- Dark blue transparent boxes show all checkpoints in-game
+- When walking through a checkpoint, it becomes lighter blue
+- Box size matches exactly what you see in the editor
+- Works with checkpoints placed as children of parent objects
+
+SETUP CHECKLIST:
+
+1. Attach CheckpointVisualization.cs to any GameObject in your scene
+2. Ensure your player GameObject has the "Player" tag
+3. On the humankillingcar component:
+   - Set up checkpoint positions (can be children of other objects)
+   - Set triggerBoxSize to your desired detection area
+   - Configure respawn positions for player (use null respawnableObject entry)
+4. Ensure the car's moving object has a collider with isTrigger = true
+5. Test: Drive car into player before hitting checkpoint - should respawn at start
+
+PARENT TRANSFORM SUPPORT:
+- Checkpoints can now be children of other objects
+- Parent position, rotation, and scale are all properly handled
+- Physics detection works with nested hierarchies

@@ -1,0 +1,55 @@
+CHECKPOINT AND MOVING OBJECT COLLISION FIX
+==========================================
+
+WHAT WAS FIXED:
+
+1. MOVING OBJECT COLLISION DETECTION
+   - Added OnTriggerEnter() method to MovingObject.cs
+   - Moving objects now properly detect player collision and respawn the player
+   - Other objects hit by the moving object are also respawned at their checkpoint
+   - The script now ensures the moving object has a collider with isTrigger enabled
+
+2. CHECKPOINT TRIGGER BOX VISUALIZATION IN-GAME
+   - Made RespawnObject() and RespawnObjectAtPosition() methods PUBLIC so MovingObject can call them
+   - Checkpoints are now drawn as blue outline boxes in the editor and highlighted in green when the player is inside
+   - The checkbox trigger boxes are drawn at the same size as shown in the editor
+   - When the player enters a checkpoint, the box outline turns bright green for clear visual feedback
+
+3. CHECKPOINT DETECTION IMPROVEMENTS
+   - Added OnTriggerStay() method for continuous checkpoint detection
+   - Checkpoint visualization is now handled by a new CheckpointVisualization.cs script
+   - Visual feedback is immediate - green means you're in a checkpoint
+
+HOW IT WORKS NOW:
+
+MOVING OBJECTS:
+- When a moving object's hitbox collides with the player (trigger collision):
+  - Player is instantly respawned at the last checkpoint reached
+  - If no checkpoint has been reached, player respawns at the spawn position
+- When a moving object hits other objects:
+  - Those objects are also respawned at their configured checkpoint positions
+
+CHECKPOINTS:
+- Walk into a checkpoint trigger box to see it light up GREEN in the game
+- The UI will display "Checkpoint X" notification
+- If you get hit by a moving object, you respawn at this checkpoint
+- The checkpoint box size matches what you see in the editor
+
+SETUP INSTRUCTIONS:
+
+1. Attach CheckpointVisualization.cs to any GameObject in your scene (or create an empty object for it)
+2. Ensure your player has the "Player" tag
+3. Ensure your moving object has:
+   - MovingObject component attached
+   - A collider on the moving object mesh (will be auto-created if missing)
+   - The collider is set as a trigger (isTrigger = true)
+4. Configure checkpoints in the humankillingcar component:
+   - Add checkpoint positions
+   - Set triggerBoxSize to match your desired detection area
+   - Set respawn positions for player and objects
+
+VISUAL FEEDBACK:
+- Editor: Checkpoints shown as blue wireframe boxes
+- In-Game: Checkpoints turn GREEN when player enters (matching the box size from editor)
+- UI: "Checkpoint X" notification appears when checkpoint is reached
+- Moving objects respawn instantly when collision occurs

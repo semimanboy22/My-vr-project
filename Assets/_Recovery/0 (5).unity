@@ -9426,7 +9426,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264783223}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &63342425 stripped
 Transform:
@@ -22217,6 +22220,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149608846}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &150585259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 209527616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &151057350
 GameObject:
   m_ObjectHideFlags: 0
@@ -24284,7 +24292,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 734073599}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &162827391 stripped
 Transform:
@@ -31991,13 +32002,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 209527618}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &209527617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
   m_PrefabInstance: {fileID: 209527616}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &209527618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150585259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &211234551
 GameObject:
   m_ObjectHideFlags: 0
@@ -34929,7 +34963,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2005515595}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &230909202 stripped
 Transform:
@@ -42564,7 +42601,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 606499885}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &287961369 stripped
 Transform:
@@ -46672,7 +46712,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2121557560}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &312309894 stripped
 Transform:
@@ -59498,6 +59541,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402091004}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &402552740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 2066303100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &403747748
 GameObject:
   m_ObjectHideFlags: 0
@@ -60522,7 +60570,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2070132194}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &411124708 stripped
 Transform:
@@ -63890,6 +63941,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429025017}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &430180563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 1476057270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430778906
 GameObject:
   m_ObjectHideFlags: 0
@@ -65491,6 +65547,11 @@ Transform:
   - {fileID: 2104542444}
   m_Father: {fileID: 711819877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &438323995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 1277923034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439588099
 GameObject:
   m_ObjectHideFlags: 0
@@ -67785,32 +67846,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 235392827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233a00457317c694e91d0369c1798038, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 10
   moveDirection: {x: -1, y: 0, z: 0}
-  moveSpeed: 10
   maxDistance: 90
-  isMoving: 1
-  loopMovement: 1
-  useRandomDelay: 1
-  minRandomDelay: 0
-  maxRandomDelay: 1.5
-  useHitbox: 1
-  hitboxSize: {x: 8, y: 5, z: 4}
-  hitboxOffset: {x: 0, y: 0, z: 0}
-  player: {fileID: 1640648563}
-  useRespawn: 1
-  defaultRespawnPoint: {x: 4, y: 1, z: 6.5}
-  useCheckpoints: 1
-  checkpointsList:
-  - checkpointPosition: {x: 0, y: 0, z: 10}
-    respawnPoint: {x: -14, y: 1, z: 8.5}
-    order: 0
-    checkpointName: 
-    triggerOnXAxis: 0
-    triggerOnYAxis: 0
-    triggerOnZAxis: 1
+  triggerBoxSize: {x: 9, y: 10, z: 10}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects:
+  - {fileID: 1802192839}
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &451720322
 GameObject:
   m_ObjectHideFlags: 0
@@ -76981,6 +77028,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510915923}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &510998015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9181669327626173419, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 2145947079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &510998017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510998015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 10
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &511204028
 GameObject:
   m_ObjectHideFlags: 0
@@ -93482,6 +93554,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606211419}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &606499884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 287961368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &606499885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606499884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &606921310
 GameObject:
   m_ObjectHideFlags: 0
@@ -95848,6 +95945,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622241798}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &623331433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 1713442973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &624291211
 GameObject:
   m_ObjectHideFlags: 0
@@ -96146,7 +96248,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852535526}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &626444081 stripped
 Transform:
@@ -96833,7 +96938,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1491699699}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &632748413 stripped
 Transform:
@@ -103190,7 +103298,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1816625619}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &669292424 stripped
 Transform:
@@ -113112,6 +113223,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733962412}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &734073598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 162827390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &734073599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734073598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 20
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &735086059
 GameObject:
   m_ObjectHideFlags: 0
@@ -114456,6 +114592,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744640816}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &745230151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 2022725445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &745918843
 GameObject:
   m_ObjectHideFlags: 0
@@ -132549,6 +132690,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852128046}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &852535525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 626444080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852535526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852535525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &853713700
 GameObject:
   m_ObjectHideFlags: 0
@@ -139927,7 +140093,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1874304385}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &897318479 stripped
 Transform:
@@ -157639,7 +157808,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026341203}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &996563180 stripped
 Transform:
@@ -193973,7 +194145,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1908888453}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &1229648020 stripped
 Transform:
@@ -197939,6 +198114,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264453910}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1264783222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 63342424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264783223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264783222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1265149324
 GameObject:
   m_ObjectHideFlags: 0
@@ -200234,13 +200434,36 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1277923036}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &1277923035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
   m_PrefabInstance: {fileID: 1277923034}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1277923036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438323995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 17
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1279334067
 GameObject:
   m_ObjectHideFlags: 0
@@ -227547,6 +227770,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460676535}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1460848903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 1977426990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1461007060
 GameObject:
   m_ObjectHideFlags: 0
@@ -229901,13 +230129,36 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1476057272}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &1476057271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
   m_PrefabInstance: {fileID: 1476057270}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1476057272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430180563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1476327307
 GameObject:
   m_ObjectHideFlags: 0
@@ -231986,6 +232237,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491445946}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1491699698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 632748412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1491699699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491699698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 10
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1492813008
 GameObject:
   m_ObjectHideFlags: 0
@@ -258136,11 +258412,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640473645}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1640648563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-  m_PrefabInstance: {fileID: 9014170783777442263}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1640791130
 GameObject:
   m_ObjectHideFlags: 0
@@ -260798,6 +261069,11 @@ Transform:
   - {fileID: 2002593627}
   m_Father: {fileID: 271433769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1658419124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 1764065504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1660308127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262072,7 +262348,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1961672165}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &1669872077 stripped
 Transform:
@@ -269062,13 +269341,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1713442975}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &1713442974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
   m_PrefabInstance: {fileID: 1713442973}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1713442975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623331433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1713680573
 GameObject:
   m_ObjectHideFlags: 0
@@ -278262,13 +278564,36 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1764065506}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &1764065505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
   m_PrefabInstance: {fileID: 1764065504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764065506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658419124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1764713892
 GameObject:
   m_ObjectHideFlags: 0
@@ -283077,6 +283402,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802162813}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1802192839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 9014170783777442263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802426928
 GameObject:
   m_ObjectHideFlags: 0
@@ -285112,6 +285442,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816130982}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1816625618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 669292423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1816625619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816625618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1817326711
 GameObject:
   m_ObjectHideFlags: 0
@@ -289197,6 +289552,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842305093}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1842618663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 1992856838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1842725394
 GameObject:
   m_ObjectHideFlags: 0
@@ -294497,6 +294857,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874173614}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1874304384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 897318478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1874304385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874304384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 17
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1874847939
 GameObject:
   m_ObjectHideFlags: 0
@@ -299883,6 +300268,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908018025}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1908888452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 1229648019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1908888453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908888452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 12
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1909738132
 GameObject:
   m_ObjectHideFlags: 0
@@ -307969,6 +308379,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdecc203fc4d5641b7dfeabca761bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonItemSpawner
+--- !u!1 &1961672164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 1669872076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1961672165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961672164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1961936920
 GameObject:
   m_ObjectHideFlags: 0
@@ -310587,13 +311022,36 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1977426992}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &1977426991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
   m_PrefabInstance: {fileID: 1977426990}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1977426992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460848903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1977823840
 GameObject:
   m_ObjectHideFlags: 0
@@ -312572,13 +313030,36 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1992856840}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &1992856839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
   m_PrefabInstance: {fileID: 1992856838}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1992856840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842618663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 14
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &1993001819
 GameObject:
   m_ObjectHideFlags: 0
@@ -314710,6 +315191,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005031363}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2005515594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 230909201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2005515595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005515594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2006014380
 GameObject:
   m_ObjectHideFlags: 0
@@ -317597,13 +318103,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2022725447}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &2022725446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
   m_PrefabInstance: {fileID: 2022725445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2022725447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745230151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2022917773
 GameObject:
   m_ObjectHideFlags: 0
@@ -318388,6 +318917,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025923053}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2026341202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+  m_PrefabInstance: {fileID: 996563179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026341203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026341202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 21
+  moveDirection: {x: 1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2026395648
 GameObject:
   m_ObjectHideFlags: 0
@@ -325682,13 +326236,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2066303102}
   m_SourcePrefab: {fileID: 100100000, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
 --- !u!4 &2066303101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
   m_PrefabInstance: {fileID: 2066303100}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2066303102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402552740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2066788492
 GameObject:
   m_ObjectHideFlags: 0
@@ -326284,6 +326861,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069604186}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2070132193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 411124707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2070132194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070132193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2070718227
 GameObject:
   m_ObjectHideFlags: 0
@@ -333638,6 +334240,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121410666}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2121557559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6844b1d065f5a564a853392a029fcf0f, type: 3}
+  m_PrefabInstance: {fileID: 312309893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2121557560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121557559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4831a709151694d905fb66189be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::humankillingcar
+  speed: 15
+  moveDirection: {x: -1, y: 0, z: 0}
+  maxDistance: 90
+  triggerBoxSize: {x: 3, y: 3, z: 3}
+  triggerBoxOffset: {x: 0, y: 0, z: 0}
+  killableObjects: []
+  defaultRespawnPosition: {x: 0, y: 0, z: 0}
+  respawnPoints: []
 --- !u!1 &2122061733
 GameObject:
   m_ObjectHideFlags: 0
@@ -337301,7 +337928,10 @@ PrefabInstance:
     - {fileID: 3436763905212568267, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     - {fileID: -7029948723529949830, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9181669327626173419, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 510998017}
   m_SourcePrefab: {fileID: 100100000, guid: 7278e190bb2f93546aa8283ed4a47457, type: 3}
 --- !u!4 &2145947080 stripped
 Transform:
