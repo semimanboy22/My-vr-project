@@ -18,6 +18,12 @@ public class Car : MonoBehaviour
     private float randomDelayTimer = 0f;
     private bool delayActive = false;
 
+    [Header("Random Speed")]
+    [SerializeField] private bool useRandomSpeed = false;
+    [SerializeField] private float minRandomSpeed = 3f;
+    [SerializeField] private float maxRandomSpeed = 7f;
+    private float currentRandomSpeed = 0f;
+
     [Header("Hitbox Settings")]
     [SerializeField] private bool useHitbox = true;
     [SerializeField] private Vector3 hitboxSize = Vector3.one;
@@ -26,6 +32,10 @@ public class Car : MonoBehaviour
 
     [Header("Player Reference")]
     [SerializeField] private GameObject player;
+
+    [Header("Player Preferences")]
+    [SerializeField] private Vector3 playerHitboxSize = Vector3.one;
+    [SerializeField] private Vector3 playerHitboxOffset = Vector3.zero;
 
     [Header("Respawn Settings")]
     [SerializeField] private bool useRespawn = true;
@@ -83,6 +93,12 @@ public class Car : MonoBehaviour
         {
             MoveObject();
         }
+
+        // Check for collision between visible hitboxes
+        if (useRespawn && player != null)
+        {
+            CheckVisibleHitboxCollision();
+        }
     }
 
     void OnDrawGizmosSelected()
@@ -90,17 +106,34 @@ public class Car : MonoBehaviour
         if (!useHitbox)
             return;
 
+        // Draw car hitbox outline in green
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + hitboxOffset, hitboxSize);
+
+        // Draw player hitbox outline in blue when selected
+        if (player != null)
+        {
+            Gizmos.color = Color.blue;
+            Vector3 playerPos = player.transform.position;
+            Gizmos.DrawWireCube(playerPos + playerHitboxOffset, playerHitboxSize);
+        }
     }
 
     void OnDrawGizmos()
     {
-        // Draw hitbox
+        // Draw car hitbox
         if (useHitbox)
         {
             Gizmos.color = new Color(0, 1, 0, 0.2f);
             Gizmos.DrawCube(transform.position + hitboxOffset, hitboxSize);
+        }
+
+        // Draw player hitbox in blue
+        if (player != null)
+        {
+            Gizmos.color = new Color(0, 0, 1, 0.2f);
+            Vector3 playerPos = player.transform.position;
+            Gizmos.DrawCube(playerPos + playerHitboxOffset, playerHitboxSize);
         }
 
         // Draw default respawn point
@@ -163,13 +196,39 @@ public class Car : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (!useRespawn || !player)
+        // Collision checking is now handled in CheckVisibleHitboxCollision()
+        // This method is kept for compatibility but actual collision detection
+        // uses visible hitbox comparison
+    }
+
+    private void CheckVisibleHitboxCollision()
+    {
+        if (!useHitbox)
             return;
 
-        if (collision.gameObject == player)
+        // Only respawn if the visible hitboxes actually collide
+        if (AreHitboxesColliding())
         {
             RespawnPlayer();
         }
+    }
+
+    private bool AreHitboxesColliding()
+    {
+        // Get the car's visible hitbox bounds
+        Vector3 carPos = transform.position;
+        Vector3 carMin = carPos - (hitboxSize * 0.5f) + hitboxOffset;
+        Vector3 carMax = carPos + (hitboxSize * 0.5f) + hitboxOffset;
+
+        // Get the player's visible hitbox bounds
+        Vector3 playerPos = player.transform.position;
+        Vector3 playerMin = playerPos - (playerHitboxSize * 0.5f) + playerHitboxOffset;
+        Vector3 playerMax = playerPos + (playerHitboxSize * 0.5f) + playerHitboxOffset;
+
+        // Check if hitboxes overlap on all three axes
+        return (playerMin.x < carMax.x && playerMax.x > carMin.x) &&
+               (playerMin.y < carMax.y && playerMax.y > carMin.y) &&
+               (playerMin.z < carMax.z && playerMax.z > carMin.z);
     }
 
     private void RespawnPlayer()
@@ -188,13 +247,23 @@ public class Car : MonoBehaviour
             delayActive = true;
             isMoving = false;
         }
+
+        // Initialize random speed for this loop cycle
+        if (useRandomSpeed)
+        {
+            currentRandomSpeed = Random.Range(minRandomSpeed, maxRandomSpeed);
+        }
+        else
+        {
+            currentRandomSpeed = moveSpeed;
+        }
     }
 
     private void MoveObject()
     {
         if (distanceTraveled < maxDistance)
         {
-            float step = moveSpeed * Time.deltaTime;
+            float step = currentRandomSpeed * Time.deltaTime;
             transform.Translate(moveDirection * step, Space.World);
             distanceTraveled += step;
 
@@ -295,6 +364,21 @@ public class Car : MonoBehaviour
         }
     }
 
+    public void SetRandomSpeed(bool useRandom, float minSpeed = 3f, float maxSpeed = 7f)
+    {
+        useRandomSpeed = useRandom;
+        minRandomSpeed = Mathf.Max(0.1f, minSpeed);
+        maxRandomSpeed = Mathf.Max(minRandomSpeed + 0.1f, maxSpeed);
+        if (useRandom)
+        {
+            currentRandomSpeed = Random.Range(minRandomSpeed, maxRandomSpeed);
+        }
+        else
+        {
+            currentRandomSpeed = moveSpeed;
+        }
+    }
+
     public void SetHitboxSize(Vector3 size)
     {
         hitboxSize = size;
@@ -375,6 +459,36 @@ public class Car : MonoBehaviour
     public bool HasPlayer()
     {
         return player != null;
+    }
+
+    public void SetPlayerHitboxSize(Vector3 size)
+    {
+        playerHitboxSize = size;
+    }
+
+    public void SetPlayerHitboxSize(float x, float y, float z)
+    {
+        SetPlayerHitboxSize(new Vector3(x, y, z));
+    }
+
+    public Vector3 GetPlayerHitboxSize()
+    {
+        return playerHitboxSize;
+    }
+
+    public void SetPlayerHitboxOffset(Vector3 offset)
+    {
+        playerHitboxOffset = offset;
+    }
+
+    public void SetPlayerHitboxOffset(float x, float y, float z)
+    {
+        SetPlayerHitboxOffset(new Vector3(x, y, z));
+    }
+
+    public Vector3 GetPlayerHitboxOffset()
+    {
+        return playerHitboxOffset;
     }
 
     public void SetDefaultRespawnPoint(Vector3 respawnPoint)
