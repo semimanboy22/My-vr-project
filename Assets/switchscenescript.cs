@@ -1,102 +1,68 @@
 using UnityEngine;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
+[RequireComponent(typeof(XRSimpleInteractable))]
 public class switchscenescript : MonoBehaviour
 {
-    [SerializeField] private int targetSceneIndex;
+    [Header("Scene Settings")]
+    [SerializeField] private string sceneName;
     [SerializeField] private string xrRigName = "XR Origin";
 
-    private object interactable;
-    private System.Type interactableType;
-    private string[] allScenePaths;
+    private XRSimpleInteractable interactable;
 
-    private void Start()
+    private void Awake()
     {
-        // Cache all scene paths in the project
-        CacheAllScenePaths();
+        interactable = GetComponent<XRSimpleInteractable>();
+        Debug.Log($"[SceneSwitcher] Initialized on {gameObject.name}");
+    }
 
-        // Use reflection to get XRSimpleInteractable type to avoid assembly reference issues
-        interactableType = System.Type.GetType("UnityEngine.XR.Interaction.Toolkit.XRSimpleInteractable, Unity.XR.Interaction.Toolkit");
-
-        if (interactableType != null)
+    private void OnEnable()
+    {
+        if (interactable != null)
         {
-            interactable = GetComponent(interactableType);
+            interactable.selectEntered.AddListener(OnSelected);
+            Debug.Log($"[SceneSwitcher] Subscribed to selectEntered");
+        }
+    }
 
-            if (interactable != null)
-            {
-                // Subscribe to activated event using reflection
-                var activatedProperty = interactableType.GetProperty("activated");
-                if (activatedProperty != null)
-                {
-                    var activatedEvent = activatedProperty.GetValue(interactable);
-                    var addListenerMethod = activatedEvent.GetType().GetMethod("AddListener");
-                    if (addListenerMethod != null)
-                    {
-                        addListenerMethod.Invoke(activatedEvent, new object[] { (System.Action)OnButtonPressed });
-                        Debug.Log("Scene switcher initialized with XRSimpleInteractable!");
-                    }
-                }
-            }
+    private void OnDisable()
+    {
+        if (interactable != null)
+        {
+            interactable.selectEntered.RemoveListener(OnSelected);
+            Debug.Log($"[SceneSwitcher] Unsubscribed from selectEntered");
+        }
+    }
+
+    private void OnSelected(SelectEnterEventArgs args)
+    {
+        Debug.Log($"[SceneSwitcher] Button selected!");
+        changeScene();
+    }
+
+    // Public method so other scripts can call it
+    public void changeScene()
+    {
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            Debug.Log($"[SceneSwitcher] Loading scene: {sceneName}, Target XR Rig: {xrRigName}");
+
+            // Store the XR rig name so XRRigSpawner can find it in the new scene
+            PlayerPrefs.SetString("TargetXRRigName", xrRigName);
+            PlayerPrefs.SetString("SwitchingScene", "true");
+            PlayerPrefs.Save();
+
+            Debug.Log($"[SceneSwitcher] PlayerPrefs set - TargetXRRigName: {xrRigName}");
+
+            SceneManager.LoadScene(sceneName);
+            Debug.Log($"[SceneSwitcher] Scene load initiated");
         }
         else
         {
-            Debug.LogWarning("XRSimpleInteractable type not found. Make sure XR Interaction Toolkit is installed.", gameObject);
+            Debug.LogWarning("Scene name is not assigned!");
         }
-    }
-
-    private void CacheAllScenePaths()
-    {
-        #if UNITY_EDITOR
-        // In editor, use AssetDatabase to find all scenes
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
-        allScenePaths = new string[guids.Length];
-
-        for (int i = 0; i < guids.Length; i++)
-        {
-            allScenePaths[i] = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
-        }
-        #endif
-    }
-
-    private void OnButtonPressed()
-    {
-        SwitchScene();
-    }
-
-    public void SwitchScene()
-    {
-        #if UNITY_EDITOR
-        if (allScenePaths == null || allScenePaths.Length == 0)
-        {
-            CacheAllScenePaths();
-        }
-
-        if (targetSceneIndex < 0 || targetSceneIndex >= allScenePaths.Length)
-        {
-            Debug.LogError("Target scene index is invalid!", gameObject);
-            return;
-        }
-
-        string scenePath = allScenePaths[targetSceneIndex];
-        #else
-        // At runtime, fallback to Build Settings
-        if (targetSceneIndex < 0 || targetSceneIndex >= SceneManager.sceneCountInBuildSettings)
-        {
-            Debug.LogError("Target scene index is invalid!", gameObject);
-            return;
-        }
-        string scenePath = SceneUtility.GetScenePathByBuildIndex(targetSceneIndex);
-        #endif
-
-        // Store the XR rig name so we can find it in the new scene
-        PlayerPrefs.SetString("XRRigName", xrRigName);
-        PlayerPrefs.Save();
-
-        // Load scene by path
-        SceneManager.LoadScene(scenePath);
     }
 }
-
-

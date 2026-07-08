@@ -9,12 +9,11 @@ using System.IO;
 public class SwitchSceneScriptEditor : Editor
 {
     private GUIContent[] sceneOptions;
+    private string[] sceneNames;
     private string[] scenePaths;
     private int selectedSceneIndex;
     private GUIContent[] xrRigOptions;
     private int selectedXRRigIndex;
-    private Scene previewScene;
-    private bool sceneLoaded = false;
 
     private void OnEnable()
     {
@@ -24,32 +23,39 @@ public class SwitchSceneScriptEditor : Editor
     private void RefreshSceneList()
     {
         List<GUIContent> sceneOptionsList = new List<GUIContent>();
+        List<string> sceneNamesList = new List<string>();
         List<string> scenePathsList = new List<string>();
 
         // Find all .unity files in the Assets folder
         string[] guids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
-
+        
         foreach (string guid in guids)
         {
             string scenePath = AssetDatabase.GUIDToAssetPath(guid);
             string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-
+            
             sceneOptionsList.Add(new GUIContent(sceneName));
+            sceneNamesList.Add(sceneName);
             scenePathsList.Add(scenePath);
         }
 
         sceneOptions = sceneOptionsList.ToArray();
+        sceneNames = sceneNamesList.ToArray();
         scenePaths = scenePathsList.ToArray();
 
-        // Get the current target scene index from the serialized property
-        var targetSceneIndexProp = serializedObject.FindProperty("targetSceneIndex");
-        selectedSceneIndex = targetSceneIndexProp.intValue;
+        // Get the current target scene name from the serialized property
+        var sceneNameProp = serializedObject.FindProperty("sceneName");
+        string currentSceneName = sceneNameProp.stringValue;
 
-        // Clamp the index to valid range
-        if (selectedSceneIndex >= sceneOptions.Length)
+        // Find the index of the current scene
+        selectedSceneIndex = 0;
+        for (int i = 0; i < sceneNames.Length; i++)
         {
-            selectedSceneIndex = 0;
-            targetSceneIndexProp.intValue = 0;
+            if (sceneNames[i] == currentSceneName)
+            {
+                selectedSceneIndex = i;
+                break;
+            }
         }
 
         // Refresh XR Rigs for the selected scene
@@ -65,11 +71,11 @@ public class SwitchSceneScriptEditor : Editor
         }
 
         List<GUIContent> xrRigOptionsList = new List<GUIContent>();
-
+        
         // Load the scene additively to find XR Origins
         string scenePath = scenePaths[selectedSceneIndex];
         Scene loadedScene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
-
+        
         // Find all XR Origins in the scene
         GameObject[] allObjects = loadedScene.GetRootGameObjects();
         FindXROrigins(allObjects, xrRigOptionsList);
@@ -143,14 +149,14 @@ public class SwitchSceneScriptEditor : Editor
 
         // Scene dropdown
         EditorGUILayout.LabelField("Target Scene", EditorStyles.label);
-        var targetSceneIndexProp = serializedObject.FindProperty("targetSceneIndex");
+        var sceneNameProp = serializedObject.FindProperty("sceneName");
         int newSceneIndex = EditorGUILayout.Popup(selectedSceneIndex, sceneOptions);
-
+        
         // If scene selection changed, refresh XR Rigs
         if (newSceneIndex != selectedSceneIndex)
         {
             selectedSceneIndex = newSceneIndex;
-            targetSceneIndexProp.intValue = selectedSceneIndex;
+            sceneNameProp.stringValue = sceneNames[selectedSceneIndex];
             RefreshXRRigs();
         }
 
@@ -159,11 +165,11 @@ public class SwitchSceneScriptEditor : Editor
         // XR Rig dropdown
         EditorGUILayout.LabelField("XR Rig in Target Scene", EditorStyles.label);
         var xrRigNameProp = serializedObject.FindProperty("xrRigName");
-
+        
         if (xrRigOptions.Length > 0)
         {
             selectedXRRigIndex = EditorGUILayout.Popup(selectedXRRigIndex, xrRigOptions);
-
+            
             // Update the XR Rig name if it's a valid selection
             if (selectedXRRigIndex >= 0 && selectedXRRigIndex < xrRigOptions.Length && 
                 !xrRigOptions[selectedXRRigIndex].text.Contains("No XR Origins"))
@@ -184,7 +190,7 @@ public class SwitchSceneScriptEditor : Editor
             string scenePath = scenePaths[selectedSceneIndex];
             string sceneName = sceneOptions[selectedSceneIndex].text;
             string xrRigName = xrRigNameProp.stringValue;
-            EditorGUILayout.HelpBox($"Scene: {sceneName}\nPath: {scenePath}\nXR Rig: {xrRigName}", MessageType.Info);
+            EditorGUILayout.HelpBox($"Scene Name: {sceneName}\nPath: {scenePath}\nXR Rig: {xrRigName}\n\nMake sure this scene is added to Build Settings (File > Build Settings)!", MessageType.Info);
         }
 
         EditorGUILayout.Space();
